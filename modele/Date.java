@@ -1,7 +1,6 @@
-package modele;
+package client.modele;
 
 import java.util.Scanner;
-import java.util.Calendar;
 
 public abstract class Date {
     protected int jour;

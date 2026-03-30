@@ -1,27 +1,26 @@
-package modele;
+package client.modele;
 
 public class Reservation {
 
-    public Object getDate;
-    private Date chDate;
+    private DateCalendrier chDateCalendrier;
     private PlageHoraire chPlaHoraire;
     private String chtitre;
 
-    public Reservation(Date DAT,PlageHoraire PL,String titre ){
-        chDate=DAT;
+    public Reservation(DateCalendrier DAT,PlageHoraire PL,String titre ){
+        chDateCalendrier=DAT;
         chPlaHoraire=PL;
         chtitre=titre;
 
     }
     public String toString(){
-        return chtitre+","+chDate.toString()+","+chPlaHoraire.toString();
+        return chtitre+","+chDateCalendrier.toString()+","+chPlaHoraire.toString();
     }
     public int CompareTo(Reservation Resev1) {
-        if ( this.chDate.compareto(Resev1.chDate ) > 0) {
+        if ( this.chDateCalendrier.compareto(Resev1.chDateCalendrier ) > 0) {
             ;
             return 5;
         }
-        if (this.chDate.compareto(Resev1.chDate) < 0) {
+        if (this.chDateCalendrier.compareto(Resev1.chDateCalendrier) < 0) {
             ;
             return -5;
         } else {
@@ -36,16 +35,18 @@ public class Reservation {
         }
 
     }
-    public Date getDate(){
-        return chDate;
+    public DateCalendrier getDate(){
+        return chDateCalendrier;
     }
     public boolean EstValide(){
-        if (this.chDate.estvalide()){
+        if (this.chDateCalendrier.estvalide()){
             if (this.chPlaHoraire.estvalide()){
                 return true;
             }
         }
         return false;
     }
-
+    public String gettitre(){
+        return chtitre;
+    }
 }

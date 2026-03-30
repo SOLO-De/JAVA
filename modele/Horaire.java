@@ -1,4 +1,4 @@
-package modele;
+package client.modele;
 
 public class Horaire {
     private int chHeure;

@@ -1,4 +1,4 @@
-package modele;
+package client.modele;
 
 public class PlageHoraire {
     private final static int  chduree=60;

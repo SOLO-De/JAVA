@@ -1,8 +1,5 @@
-package modele;
+package client.modele;
 
-
-import java.util.ArrayList;
-import java.util.TreeSet;
 
 public class Planning {
     private Reservation [] chRes;
