@@ -6,6 +6,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import modele.CalendrierDuMois;
 
+import java.io.File;
+
 public class app extends Application {
 
     public static void main(String[] args) {
@@ -21,5 +23,9 @@ public class app extends Application {
         stage.setTitle("Hello");
         stage.show();
         VBox date= new VBox();
+        File css= new File("css"+File.separator+"css.css");
+        scene.getStylesheets().add(css.toURI().toString());
     }
+
+
 }
