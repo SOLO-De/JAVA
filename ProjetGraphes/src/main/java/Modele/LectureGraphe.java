@@ -55,4 +55,44 @@ public class LectureGraphe {
         }
         return new Graphe(file.getName(), lesVoisins);
     }
+    public static GrapheOriente lectureGO(File file){
+        Map <Integer, Set<Integer>> lesVoisins = new TreeMap<>();
+        try {
+            Scanner scannerLigne = new Scanner(file);
+            Scanner scannerToken  ;
+            String ligne;
+            while (scannerLigne.hasNext()) {
+                ligne = scannerLigne.nextLine();
+                scannerToken = new Scanner(ligne);
+                if (ligne.startsWith("V")) { // ligne intervalle des sommets
+                    scannerToken.next(); //"V"
+                    // le token suivant est un intervalle
+                    // [0..4] par exemple pour petitgraphe1.txt
+                    String intervalle = scannerToken.next();
+                    String[] minEtMax = intervalle.split("[.\\[\\]]+");
+                    int min = Integer.parseInt(minEtMax[1]);
+                    int max = Integer.parseInt(minEtMax[2]);
+                    for (int i = min; i <= max; i++) {
+                        lesVoisins.put(i, new TreeSet<Integer>());
+                    }
+                }
+
+                if (ligne.startsWith ("A")){  // ligne arête
+                    scannerToken.next(); //"E"
+                    int numSommetDepart = scannerToken.nextInt();
+                    int numSommetArrivee = scannerToken.nextInt();
+                    lesVoisins.get(numSommetDepart).add (numSommetArrivee);
+                }
+                scannerToken.close();
+            }
+            scannerLigne.close();
+
+        }
+        catch (NoSuchElementException |
+               IllegalStateException |
+               FileNotFoundException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return new GrapheOriente(file.getName(), lesVoisins);
+    }
 }
