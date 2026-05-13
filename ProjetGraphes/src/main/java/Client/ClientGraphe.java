@@ -19,6 +19,8 @@ public class ClientGraphe {
         for(File fichier :listegrpheO) {
             GrapheOriente g1 = LectureGraphe.lectureGO(fichier);
             System.out.println(g1.toString());
+            System.out.println(g1.DegreEntrant());
+            System.out.println(g1.OrdreTopo());
         }
 
 
